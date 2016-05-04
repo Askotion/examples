@@ -1,9 +1,30 @@
+#========== Import ========#
+
+require 'pp'
+
+
 #========== Hashes ========#
 
 QuestionsInHash = {
-  "Wie Teuer ist das Produkt in der Herstellung?" => 0,
-  "Wie schwer ist das Produkt?" => 0,
-  "Hier ist noch eine Frage" => 0
+  "Einkaufspreis" => 4,
+  "Verkaufspreis" => 6,
+  "Mindestabnahmemenge" => 6,
+  "White Labled" => 6,
+  "Seriöser Anbieter" => 4,
+  "Customizable" => 4,
+  "Größe" => 6,
+  "Normen" => 6,
+  "Kontrolle über Funktionalität" => 5,
+  "Verschleiß" => 5,
+  "Differenzierugnsmerkmal" => 6,
+  "Konkurrenz" => 6,
+  "Durchschnittliche Bewertungen" => 5,
+  "Verkaufsrate(Mengen)" => 5,
+  "Saisionabhängigkeit" => 4,
+  "Zielgruppe/Trend" => 6,
+  "Verletzungsrisiko/Risiken" => 6,
+  "Geruch" => 5,
+  "Möglichkeit zur Markterweiterung" => 4
 
 }
 
@@ -11,10 +32,26 @@ QuestionsInHash = {
 
 def clear
 
-sleep(1)
+sleep(0.5)
 system("clear")
-puts "==============> Produkt Auswertung <============"
-sleep(1)
+puts "=================================================="
+puts "==============> Produkt Auswertung <=============="
+puts "=================================================="
+puts ""
+sleep(0.2)
+
+end
+
+def clearProduct
+
+sleep(0.5)
+system("clear")
+puts "=================================================="
+puts "==============> Produkt Auswertung <=============="
+puts "Bewertung für Produkt: #{ProduktName}"
+puts "=================================================="
+puts ""
+sleep(0.2)
 
 end
 
@@ -25,7 +62,6 @@ QuestionsInHash[question] = points
 
 end
 
-
 #======== Variables ========#
 
 points = 0
@@ -33,22 +69,18 @@ QuestionCount = 0
 
 #========= Main ==========#
 
+clear
 
-#while QuestionCount <= 1 
-#	clear
-#	puts QuestionsInHash[1]
-#	points = gets.chomp
-#	questions(QuestionInHash[QuestionCount], points)
-#
-#	questionCount += 1
-#end
+puts "Welches Produkt möchtest du bewerten?"
+ProduktName = gets.chomp
 
-QuestionsInHash.each { |x, y|
 
-	clear
-	puts x
+QuestionsInHash.each { |question, defaultPoints|
+
+	clearProduct
+	puts "Was ist mit: " + question + "? (Max. #{defaultPoints} Punkte)"
 	points = gets.chomp
-	questions(x, points)
+	questions(question, points)
 
 }
 
